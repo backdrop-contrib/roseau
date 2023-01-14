@@ -62,7 +62,7 @@
 @media (min-width: 75rem) {
 
   .site-branding {
-    min-height: var(--site-header-height-wide);
+    min-height: var(--l-header-height-wide);
     margin-inline-start: calc(-1 * var(--container-padding));
     padding-block: 0;
   }

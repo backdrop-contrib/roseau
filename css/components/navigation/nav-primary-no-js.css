@@ -43,7 +43,7 @@
     break-inside: avoid;
   }
 
-  html:not(.js) .site-header__inner__container {
+  html:not(.js) .l-header__inner__container {
     flex-wrap: wrap;
   }
 
@@ -98,7 +98,7 @@
     break-inside: avoid;
   }
 
-  html:not(.js) body.is-always-mobile-nav .site-header__inner__container {
+  html:not(.js) body.is-always-mobile-nav .l-header__inner__container {
     flex-wrap: wrap;
   }
 

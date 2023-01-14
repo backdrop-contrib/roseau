@@ -24,7 +24,7 @@ html:not(.js) {
       break-inside: avoid;
     }
 
-    & .site-header__inner__container {
+    & .l-header__inner__container {
       flex-wrap: wrap;
     }
 
@@ -79,7 +79,7 @@ html:not(.js) {
         break-inside: avoid;
       }
 
-      & .site-header__inner__container {
+      & .l-header__inner__container {
         flex-wrap: wrap;
       }
 

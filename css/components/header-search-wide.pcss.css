@@ -5,7 +5,7 @@
 
 @import "../base/media-queries.pcss.css";
 
-/* Override contextual links so we can position against .site-header. */
+/* Override contextual links so we can position against .l-header. */
 .block-search-wide.contextual-region {
   position: static;
 }

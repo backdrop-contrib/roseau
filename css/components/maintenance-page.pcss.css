@@ -6,7 +6,7 @@
 @import "../base/media-queries.pcss.css";
 
 .maintenance-page {
-  & .site-header__initial {
+  & .l-header__initial {
     @media (--nav) {
       flex-shrink: 0;
       width: var(--content-left);

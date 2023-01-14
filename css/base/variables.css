@@ -42,7 +42,7 @@
   --max-bg-color: 98.125rem; /* Width to which the background color extends to. */
   --sp: 1.125rem;
   --content-left: 5.625rem;
-  --site-header-height-wide: var(--sp10);
+  --l-header-height-wide: var(--sp10);
   --container-padding: var(--sp); /* Inline padding on .container elements. */
 }
 

@@ -134,7 +134,7 @@
     width: 15.625rem;
     /* Ensure that long level-2 menus will never overflow viewport (focused
        * elements should always be in viewport per accessibility guidelines). */
-    max-height: calc(100vh - var(--site-header-height-wide) - var(--drupal-displace-offset-top, 0px) - var(--drupal-displace-offset-bottom, 0px) - var(--sp));
+    max-height: calc(100vh - var(--l-header-height-wide) - var(--drupal-displace-offset-top, 0px) - var(--drupal-displace-offset-bottom, 0px) - var(--sp));
     margin-block-start: 0;
     margin-inline-start: 0;
     padding-block: calc(3 * var(--sp));
@@ -217,7 +217,7 @@
      * little extra room when the toolbar is fixed (and is shorter).
      */
   body:not(.is-always-mobile-nav) .is-fixed .primary-nav__menu--level-2 {
-    max-height: calc(100vh - var(--site-header-height-wide) - var(--drupal-displace-offset-top, 0px) - var(--drupal-displace-offset-bottom, 0px) - var(--sp) + var(--sp4));
+    max-height: calc(100vh - var(--l-header-height-wide) - var(--drupal-displace-offset-top, 0px) - var(--drupal-displace-offset-bottom, 0px) - var(--sp) + var(--sp4));
   }
 }
 
