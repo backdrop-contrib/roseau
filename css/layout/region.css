@@ -23,20 +23,20 @@
 
 /* Width of the entire grid maxes out. */
 
-.region > * {
+.l-page-title, .tabs > *, .l-wrapper > *, .l-messages > *, .l-top > *, .l-content > *, .l-bottom > *, .l-footer > * {
   margin-block-end: var(--sp);
 }
 
 @media (min-width: 43.75rem) {
 
-  .region > * {
+  .l-page-title, .tabs > *, .l-wrapper > *, .l-messages > *, .l-top > *, .l-content > *, .l-bottom > *, .l-footer > * {
     margin-block-end: var(--sp2);
   }
 }
 
 @media (min-width: 62.5rem) {
 
-  .region > * {
+  .l-page-title, .tabs > *, .l-wrapper > *, .l-messages > *, .l-top > *, .l-content > *, .l-bottom > *, .l-footer > * {
     margin-block-end: var(--sp3);
   }
 }
