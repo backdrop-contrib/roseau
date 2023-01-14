@@ -37,7 +37,7 @@ body.is-fixed .container {
   width: calc(100% - var(--drupal-displace-offset-left, 0px) - var(--drupal-displace-offset-right, 0px));
 }
 
-.page-wrapper {
+.layout {
   max-width: var(--max-bg-color);
   background: var(--color--white);
 }
