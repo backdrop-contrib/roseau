@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    theme:
+      - roseau
+id: roseau_medium
+label: 'Roseau Medium'
+locked: false
+pattern: 'j  F,  Y'
