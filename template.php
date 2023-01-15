@@ -235,7 +235,6 @@ function roseau_theme_suggestions_block_alter(&$suggestions, array $variables) {
  * Implements hook_preprocess_HOOK() for menu-local-tasks templates.
  */
 function roseau_preprocess_menu_local_tasks(&$variables) {
-  dpm($variables);
   if (!empty($variables['primary'])) {
     foreach (element_children($variables['primary']) as $key) {
       $variables['primary'][$key]['#level'] = 'primary';
@@ -594,6 +593,72 @@ function roseau_preprocess_links__comment(&$variables) {
   foreach ($variables['links'] as &$link) {
     $link['link']['#options']['attributes']['class'][] = 'comment__links-link';
   }
+}
+
+/**
+ * Implements hook_links().
+ */
+function roseau_links__header_menu($variables) {
+  global $language_url;
+
+  $links = (array) $variables['links'];
+  $attributes = (array) $variables['attributes'];
+  $attributes['class'][] = 'secondary-nav__menu';
+  $heading = $variables['heading'];
+  $output = '';
+
+  if (!empty($links)) {
+    $output .= '<ul' . backdrop_attributes($attributes) . '>';
+
+    $num_links = count($links);
+    $i = 0;
+    foreach ($links as $key => $link) {
+      $i++;
+
+      $class = array('secondary-nav__menu-item secondary-nav__menu-item--link');
+      // Use the array key as class name.
+      $class[] = backdrop_html_class($key);
+      // Add odd/even, first, and last classes.
+      $class[] = ($i % 2 ? 'odd' : 'even');
+      if ($i == 1) {
+        $class[] = 'first';
+      }
+      if ($i == $num_links) {
+        $class[] = 'last';
+      }
+
+      // Handle links.
+      if (isset($link['href'])) {
+        $is_current_path = ($link['href'] == $_GET['q'] || ($link['href'] == '<front>' && backdrop_is_front_page()));
+        $is_current_language = (empty($link['language']) || $link['language']->langcode == $language_url->langcode);
+        if ($is_current_path && $is_current_language) {
+          $class[] = 'active';
+        }
+        $link['attributes']['class'][] = 'secondary-nav__menu-link secondary-nav__menu-link--link';
+        // Pass in $link as $options, they share the same keys.
+        $item = l($link['title'], $link['href'], $link);
+      }
+      // Handle title-only text items.
+      else {
+        // Merge in default array properties into $link.
+        $link += array(
+          'html' => FALSE,
+          'attributes' => array(),
+        );
+        $item = '<span' . backdrop_attributes($link['attributes']) . '>';
+        $item .= ($link['html'] ? $link['title'] : check_plain($link['title']));
+        $item .= '</span>';
+      }
+
+      $output .= '<li' . backdrop_attributes(array('class' => $class)) . '>';
+      $output .= $item;
+      $output .= '</li>';
+    }
+
+    $output .= '</ul>';
+  }
+
+  return $output;
 }
 
 /**

@@ -74,7 +74,7 @@
 .l-header__inner {
   z-index: 1; /* Appear in front of Drupal's tabs. */
   flex-grow: 1;
-  width: calc(100vw - var(--content-left) - var(--drupal-displace-offset-left, 0px) - var(--drupal-displace-offset-right, 0px));
+  /* width: calc(100vw - var(--content-left) - var(--drupal-displace-offset-left, 0px) - var(--drupal-displace-offset-right, 0px)); */
   background: var(--color--white);
 }
 
@@ -124,4 +124,8 @@
 .l-header__inner__container {
   display: flex;
   justify-content: space-between;
+}
+
+.l-header__inner__container:after {
+  content: none;
 }
