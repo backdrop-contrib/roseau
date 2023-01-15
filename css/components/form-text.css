@@ -31,7 +31,7 @@
 [type="month"],
 [type="number"],
 [type="password"],
-[type="search"],
+[type="search"]:not(#admin-bar-search-items),
 [type="tel"],
 [type="text"],
 [type="time"],
