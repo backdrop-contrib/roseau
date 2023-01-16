@@ -598,12 +598,33 @@ function roseau_preprocess_links__comment(&$variables) {
 /**
  * Implements hook_links().
  */
+function roseau_preprocess_header(&$variables) {
+  $primary_menu = menu_navigation_links('main-menu');
+  $variables['primary_menu'] = theme('links__header_menu__primary', array('links' => $primary_menu));
+}
+
+/**
+ * Implements hook_links().
+ * Duplicates theme_links really, but needed to put classes on <ul> and <li>
+ * tags.
+ */
 function roseau_links__header_menu($variables) {
   global $language_url;
+  $primary = $variables['theme_hook_original'] == 'links__header_menu__primary';
+  if ($primary) {
+    $ul_class = 'primary-nav__menu  primary-nav__menu--level-1';
+    $li_class = 'primary-nav__menu-item primary-nav__menu-item--level-1 primary-nav__menu-item--link';
+    $link_class = 'primary-nav__menu-link primary-nav__menu-link--level-1 primary-nav__menu-link--link';
+  }
+  else {
+    $ul_class = 'secondary-nav__menu';
+    $li_class = 'secondary-nav__menu-item secondary-nav__menu-item--link';
+    $link_class = 'secondary-nav__menu-link secondary-nav__menu-link--link';
+  }
 
   $links = (array) $variables['links'];
   $attributes = (array) $variables['attributes'];
-  $attributes['class'][] = 'secondary-nav__menu';
+  $attributes['class'][] = $ul_class;
   $heading = $variables['heading'];
   $output = '';
 
@@ -615,7 +636,7 @@ function roseau_links__header_menu($variables) {
     foreach ($links as $key => $link) {
       $i++;
 
-      $class = array('secondary-nav__menu-item secondary-nav__menu-item--link');
+      $class = array($li_class);
       // Use the array key as class name.
       $class[] = backdrop_html_class($key);
       // Add odd/even, first, and last classes.
@@ -634,9 +655,18 @@ function roseau_links__header_menu($variables) {
         if ($is_current_path && $is_current_language) {
           $class[] = 'active';
         }
-        $link['attributes']['class'][] = 'secondary-nav__menu-link secondary-nav__menu-link--link';
-        // Pass in $link as $options, they share the same keys.
-        $item = l($link['title'], $link['href'], $link);
+        $link['attributes']['class'][] = $link_class;
+        // Todo: this is obviously a mess.
+        if ($primary) {
+          $item = '<a href="' . $link['href'] . '" class="primary-nav__menu-link primary-nav__menu-link--link primary-nav__menu-link--level-1" data-backdrop-selector="primary-nav-menu-link-has-children" data-backdrop-link-system-path="admin/config">
+          <span class="primary-nav__menu-link-inner primary-nav__menu-link-inner--level-1">' . $link['title'] . 
+          '</span>
+          </a>';
+        }
+        else {
+          // Pass in $link as $options, they share the same keys.
+          $item = l($link['title'], $link['href'], $link);
+        }
       }
       // Handle title-only text items.
       else {

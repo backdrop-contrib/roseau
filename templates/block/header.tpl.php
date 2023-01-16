@@ -51,9 +51,14 @@
     </div>
     <div class="header-nav">
       <?php if ($menu): ?>
-        <nav class="header-menu">
-          <?php print $menu; ?>
+        <nav class="navigation primary-nav">
+          <?php print $primary_menu; ?>
         </nav>
+        <div class="region region--secondary-menu">
+          <nav class="navigation secondary-nav">
+            <?php print $menu; ?>
+          </nav>
+        </div>
       <?php endif; ?>
     </div>
   </div>

@@ -12,7 +12,6 @@
  *
  * @ingroup themeable
  */
- dpm($primary);
 ?>
  
 
