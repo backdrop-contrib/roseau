@@ -369,11 +369,11 @@ function roseau_preprocess_field(&$variables) {
   $rich_field_types = ['text_with_summary', 'text', 'text_long'];
 
   if (in_array($variables['element']['#field_type'], $rich_field_types, TRUE)) {
-    $variables['attributes']['class'][] = 'text-content';
+    $variables['classes'][] = 'text-content';
   }
 
   if ($variables['element']['#field_type'] == 'image' && $variables['element']['#view_mode'] == 'full' && !$variables["element"]["#is_multiple"] && $variables['field_name'] !== 'user_picture') {
-    $variables['attributes']['class'][] = 'wide-image';
+    $variables['classes'][] = 'wide-image';
   }
 }
 
