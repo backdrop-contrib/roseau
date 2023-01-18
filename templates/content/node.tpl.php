@@ -70,13 +70,13 @@
 ?>
 
 
-<?php  // set layout = layout ? 'layout--' ~ layout|clean_class ?>
+<?php $layout = isset($layout) ? 'layout--' . backdrop_html_class($layout) : ''; ?>
 
 
 <?php $classes = [
     'node',
     // 'node--type-' ~ node.bundle|clean_class,
-    // layout ? 'grid-full',
+    isset($layout) ? 'grid-full' : '',
     // $node->promoted ? 'node--promoted' : '',
     // $node->sticky ? 'node--promoted' : '',
     !$node->status ? 'node--unpublished' : '',
@@ -86,7 +86,7 @@
 ?>
 
 <article class="<?php print implode(' ', $classes); ?> clearfix">
-  <header class="<?php //echo $layout; ?>">
+  <header class="<?php echo $layout; ?>">
     <?php  print render($title_prefix); ?>
     <?php if ($title && !$page): ?>
       <h2 class="node__title">
@@ -109,13 +109,13 @@
       </div>
     <?php endif; ?>
   </header>
-  <div class="node__content layout">
+  <div class="node__content <?php echo $layout; ?>">
     <?php
       print render($content);
     ?>
   </div>
   <?php if ($comments): ?>
-    <section class="comments" id="comments">
+    <section class="<?php echo $layout; ?>" id="comments">
       <?php if ($comments['comments']): ?>
         <h2 class="title"><?php print t('Comments'); ?></h2>
         <?php print render($comments['comments']); ?>

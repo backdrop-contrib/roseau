@@ -100,10 +100,10 @@ function roseau_preprocess_node(&$variables) {
     // $variables['date'] = \Drupal::service('date.formatter')->format($variables['node']->getCreatedTime(), 'roseau_medium');
   }
 
-  // Pass layout variable to template if content type is article in full view
+  // Pass layout variable to template if content type is post in full view
   // mode. This is then used in the template to create a BEM style CSS class to
   // control the layout.
-  if ($variables['node']->bundle() === 'article' && $variables['view_mode'] === 'full') {
+  if ($variables['node']->bundle() === 'post' && $variables['view_mode'] === 'full') {
     $variables['layout'] = 'content-narrow';
   }
 }
