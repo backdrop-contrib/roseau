@@ -523,9 +523,10 @@ function roseau_form_node_preview_form_select_alter(&$form, &$form_state, $form_
  */
 function roseau_preprocess_comment(&$variables) {
   // Getting the node creation time stamp from the comment object.
-  $date = $variables['comment']->getCreatedTime();
+  dpm($variables['comment']);
+  $date = $variables['comment']->created;
   // Formatting "created" as "X days ago".
-  $variables['created'] = t('@time ago', ['@time' => \Drupal::service('date.formatter')->formatInterval(\Drupal::time()->getRequestTime() - $date)]);
+  $variables['created'] = t('@time ago', ['@time' => format_interval(time() - $date)]);
 }
 
 /**
@@ -554,11 +555,11 @@ function roseau_preprocess_field__comment(&$variables) {
  */
 function roseau_element_info_alter(&$info) {
   if (array_key_exists('text_format', $info)) {
-    $info['text_format']['#pre_render'][] = [RoseauPreRender::class, 'textFormat'];
+    // $info['text_format']['#pre_render'][] = [RoseauPreRender::class, 'textFormat'];
   }
 
   if (isset($info['status_messages'])) {
-    $info['status_messages']['#pre_render'][] = [RoseauPreRender::class, 'messagePlaceholder'];
+    //$info['status_messages']['#pre_render'][] = [RoseauPreRender::class, 'messagePlaceholder'];
   }
 }
 
@@ -573,7 +574,7 @@ function roseau_preprocess_text_format_wrapper(&$variables) {
     $description_attributes['id'] = $variables['attributes']['aria-describedby'] = $variables['attributes']['id'];
     unset($variables['attributes']['id']);
   }
-  $variables['description_attributes'] = new Attribute($description_attributes);
+  // $variables['description_attributes'] = new Attribute($description_attributes);
 }
 
 /**

@@ -111,14 +111,20 @@
   </header>
   <div class="node__content layout">
     <?php
-      // We hide the links now so that we can render them later.
-      hide($content['comment']);
       print render($content);
     ?>
   </div>
-  <?php if ($content['comment']): ?>
-    <div id="comments" class="">
-      <?php echo render($content['comment']); ?>
-    </div>
+  <?php if ($comments): ?>
+    <section class="comments" id="comments">
+      <?php if ($comments['comments']): ?>
+        <h2 class="title"><?php print t('Comments'); ?></h2>
+        <?php print render($comments['comments']); ?>
+      <?php endif; ?>
+
+      <?php if ($comments['comment_form']): ?>
+        <h2 class="title comment-form"><?php print t('Add comment'); ?></h2>
+        <?php print render($comments['comment_form']); ?>
+      <?php endif; ?>
+    </section>
   <?php endif; ?>
 </article>

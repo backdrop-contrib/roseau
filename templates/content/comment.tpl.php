@@ -63,6 +63,7 @@
  *
  * @see template_preprocess_comment()
  */
+dpm(get_defined_vars());
  ?>
 
 <?php $classes = [
@@ -76,7 +77,7 @@
  ?>
  
 <article  class="<?php print implode(' ', $classes); ?>" <?php print backdrop_attributes($attributes); ?> role="post"  data-drupal-selector="comment">
-  <span class="hidden" data-comment-timestamp="<?php echo $new_indicator_timestamp; ?>"></span>
+  <span class="hidden" data-comment-timestamp="<?php echo $new; ?>"></span>
 
   <div class="comment__picture-wrapper">
     <div class="comment__picture">
@@ -88,17 +89,17 @@
       <p class="comment__author"><?php echo $author; ?></p>
       <p class="comment__time"><?php echo $created; ?></p>
 
-      <?php if ($parent): ?>
-        <p class="element-invisible"><?php echo $parent; ?></p>
-      <?php endif; ?>
+      <?php //if ($parent): ?>
+        <!--p class="element-invisible"><?php //echo $parent; ?></p-->
+      <?php //endif; ?>
     </footer>
     <div class="comment__content" >
       <?php if ($title): ?>
-        <?php echo $title_prefix; ?>
-        <h3<?php echo $title_attributes; ?>><?php echo $title; ?></h3>
-        <?php echo $title_suffix; ?>
+        <?php print render($title_prefix); ?>
+        <h3 class="<?php print implode(' ', $title_classes); ?>"><?php echo $title; ?></h3>
+        <?php print render($title_suffix); ?>
       <?php endif; ?>
-      <?php echo $content; ?>
+      <?php print render($content); ?>
     </div>
   </div>
 </article>
