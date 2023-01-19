@@ -590,9 +590,11 @@ function roseau_preprocess_search_result(&$variables) {
 /**
  * Implements hook_preprocess_links__comment().
  */
-function roseau_preprocess_links__comment(&$variables) {
+function roseau_preprocess_links(&$variables) {
+    $variables['attributes']['class'][] = 'comment__links';
+  dpm($variables);
   foreach ($variables['links'] as &$link) {
-    $link['link']['#options']['attributes']['class'][] = 'comment__links-link';
+    $link['attributes']['class'][] = 'comment__links-link';
   }
 }
 
