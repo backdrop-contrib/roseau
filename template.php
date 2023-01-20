@@ -241,7 +241,6 @@ function roseau_theme_suggestions_block_alter(&$suggestions, array $variables) {
  * Implements hook_preprocess_HOOK() for menu-local-tasks templates.
  */
 function roseau_preprocess_button(&$variables) {
-  dpm($variables);
   if (isset($variables['element']['#attributes']['class']) && in_array('button-primary', $variables['element']['#attributes']['class'])) {
     $variables['element']['#attributes']['class'][] = 'button--primary';
   }
@@ -304,7 +303,6 @@ function roseau_preprocess_form_element_label(&$variables) {
  * Implements hook_preprocess_HOOK().
  */
 function roseau_preprocess_input(&$variables) {
-  dpm($variables);
   if (
     !empty($variables['element']['#title_display']) &&
     $variables['element']['#title_display'] === 'attribute' &&

@@ -65,8 +65,6 @@
  *
  * @see template_preprocess_node()
  */
-
-// dpm(get_defined_vars());
 ?>
 
 

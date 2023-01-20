@@ -63,7 +63,6 @@
  *
  * @see template_preprocess_comment()
  */
-dpm(get_defined_vars());
  ?>
 
 <?php $classes = [
