@@ -187,8 +187,14 @@ function roseau_theme_suggestions_form_alter(array &$suggestions, array $variabl
  * Implements hook_form_alter() for adding classes and placeholder text to the search forms.
  */
 function roseau_form_alter(&$form, &$form_state, $form_id) {
-  if (isset($form['actions']['submit']) && (count($form['actions'])) <= 2) {
-    $form['actions']['submit']['#attributes']['class'][] = 'button--primary';
+  if (isset($form['actions']['submit'])) {
+    $form['actions']['submit']['#attributes']['class'][] = 'button';
+    if (count($form['actions']) <= 2) {
+      $form['actions']['submit']['#attributes']['class'][] = 'button--primary';
+    }
+  }
+  if (isset($form['actions']['preview'])) {
+    $form['actions']['preview']['#attributes']['class'][] = 'button';
   }
 
   switch ($form_id) {
@@ -234,6 +240,16 @@ function roseau_theme_suggestions_block_alter(&$suggestions, array $variables) {
 /**
  * Implements hook_preprocess_HOOK() for menu-local-tasks templates.
  */
+function roseau_preprocess_button(&$variables) {
+  dpm($variables);
+  if (isset($variables['element']['#attributes']['class']) && in_array('button-primary', $variables['element']['#attributes']['class'])) {
+    $variables['element']['#attributes']['class'][] = 'button--primary';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for menu-local-tasks templates.
+ */
 function roseau_preprocess_menu_local_tasks(&$variables) {
   if (!empty($variables['primary'])) {
     foreach (element_children($variables['primary']) as $key) {
@@ -263,6 +279,10 @@ function roseau_preprocess_form_element(&$variables) {
     $variables['attributes']['class'][] = 'form-type-boolean';
   }
 
+  if ($variables['element']['#type'] == 'submit') {
+    $variables['attributes']['class'][] = 'button';
+  }
+
   if (!empty($variables['description']['attributes'])) {
     $variables['description']['attributes']->addClass('form-item__description');
   }
@@ -284,6 +304,7 @@ function roseau_preprocess_form_element_label(&$variables) {
  * Implements hook_preprocess_HOOK().
  */
 function roseau_preprocess_input(&$variables) {
+  dpm($variables);
   if (
     !empty($variables['element']['#title_display']) &&
     $variables['element']['#title_display'] === 'attribute' &&
@@ -523,7 +544,6 @@ function roseau_form_node_preview_form_select_alter(&$form, &$form_state, $form_
  */
 function roseau_preprocess_comment(&$variables) {
   // Getting the node creation time stamp from the comment object.
-  dpm($variables['comment']);
   $date = $variables['comment']->created;
   // Formatting "created" as "X days ago".
   $variables['created'] = t('@time ago', ['@time' => format_interval(time() - $date)]);
@@ -592,7 +612,6 @@ function roseau_preprocess_search_result(&$variables) {
  */
 function roseau_preprocess_links(&$variables) {
     $variables['attributes']['class'][] = 'comment__links';
-  dpm($variables);
   foreach ($variables['links'] as &$link) {
     $link['attributes']['class'][] = 'comment__links-link';
   }

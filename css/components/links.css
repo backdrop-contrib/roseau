@@ -45,3 +45,7 @@
     text-align: end;
   }
 }
+
+.form-cancel {
+  align-self: center;
+}
