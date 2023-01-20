@@ -46,6 +46,20 @@
   box-shadow: none;
 }
 
+fieldset .fieldset-legend {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 0.5em 0.78947em;
+}
+
+fieldset.filter-wrapper {
+  margin-top: 0;
+  border: 1px solid #d1d1d1;
+  border-top: 0;
+}
+
 .fieldset__legend {
   float: left; /* Prevent sticking out of top of fieldset. */
   width: 100%;
