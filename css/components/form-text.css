@@ -37,6 +37,7 @@
 [type="time"],
 [type="url"],
 [type="week"],
+fieldset,
 textarea {
   width: 100%;
   max-width: 100%;
