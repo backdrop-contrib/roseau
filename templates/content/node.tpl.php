@@ -74,7 +74,7 @@
 <?php $classes = [
     'node',
     // 'node--type-' ~ node.bundle|clean_class,
-    isset($layout) ? 'grid-full' : '',
+    isset($layout) ? '' : 'grid-full',
     // $node->promoted ? 'node--promoted' : '',
     // $node->sticky ? 'node--promoted' : '',
     !$node->status ? 'node--unpublished' : '',

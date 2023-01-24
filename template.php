@@ -609,9 +609,11 @@ function roseau_preprocess_search_result(&$variables) {
  * Implements hook_preprocess_links__comment().
  */
 function roseau_preprocess_links(&$variables) {
+  if ($variables['theme_hook_original'] == 'links__comment') {
     $variables['attributes']['class'][] = 'comment__links';
-  foreach ($variables['links'] as &$link) {
-    $link['attributes']['class'][] = 'comment__links-link';
+    foreach ($variables['links'] as &$link) {
+      $link['attributes']['class'][] = 'comment__links-link';
+    }
   }
 }
 
