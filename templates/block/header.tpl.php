@@ -37,9 +37,9 @@
                   <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
                 </strong></div>
               <?php else: /* Use h1 when the content title is empty */ ?>
-                <h1 class="site-branding__name site-name">
+                <div class="site-branding__name site-name">
                   <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
-                </h1>
+                </div>
               <?php endif; ?>
             <?php endif; ?>
             <?php if ($site_slogan): ?>
