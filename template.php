@@ -391,7 +391,7 @@ function roseau_preprocess_field(&$variables) {
     $variables['classes'][] = 'text-content';
   }
 
-  if ($variables['element']['#field_type'] == 'image' && $variables['element']['#view_mode'] == 'full' && !$variables["element"]["#is_multiple"] && $variables['field_name'] !== 'user_picture') {
+  if ($variables['element']['#field_type'] == 'image' && $variables['element']['#view_mode'] == 'full' && !$variables["element"]["#is_multiple"] && $variables["element"]['#field_name'] !== 'user_picture') {
     $variables['classes'][] = 'wide-image';
   }
 }
@@ -816,4 +816,28 @@ function _roseau_hex_to_hsl(string $hex_string) {
   $l = round($l * 100);
 
   return [$h, $s, $l];
+}
+
+/**
+ * Implements hook_preprocess_views_view_grid().
+ */
+function roseau_preprocess_views_view_grid(&$variables) {
+  backdrop_add_library('roseau', 'layout_views_grid', TRUE);
+}
+
+/**
+ * Implements hook_library_info().
+ */
+function roseau_library_info() {
+  $path = path_to_theme('roseau');
+  $libraries['layout_views_grid'] = array(
+    'title' => 'Roseau layout views grid',
+    'css' => array(
+      $path . '/css/layout/layout-views-grid.css' => array(
+        'type' => 'file',
+      ),
+    ),
+  );
+
+  return $libraries;
 }
