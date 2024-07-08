@@ -681,7 +681,7 @@ function roseau_links__header_menu($variables) {
         $link['attributes']['class'][] = $link_class;
         // Todo: this is obviously a mess.
         if ($primary) {
-          $item = '<a href="' . $link['href'] . '" class="primary-nav__menu-link primary-nav__menu-link--link primary-nav__menu-link--level-1" data-backdrop-selector="primary-nav-menu-link-has-children" data-backdrop-link-system-path="admin/config">
+          $item = '<a href="' . url($link['href']) . '" class="primary-nav__menu-link primary-nav__menu-link--link primary-nav__menu-link--level-1" data-backdrop-selector="primary-nav-menu-link-has-children" data-backdrop-link-system-path="admin/config">
           <span class="primary-nav__menu-link-inner primary-nav__menu-link-inner--level-1">' . $link['title'] . 
           '</span>
           </a>';
