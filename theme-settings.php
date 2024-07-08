@@ -68,6 +68,12 @@ function roseau_form_system_theme_settings_alter(&$form, &$form_state, $form_id 
     '#default_value' => theme_get_setting('mobile_menu_all_widths'),
     '#description' => t('Enables the mobile menu toggle at all widths.'),
   ];
+  $form['roseau_settings']['roseau_utilities']['primary_nav_in_header'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Show primary navigation menu in header'),
+    '#default_value' => theme_get_setting('primary_nav_in_header'),
+    '#description' => t('Enable to show primary navigation menu in header if not using the Primary navigation block.'),
+  ];
   $form['roseau_settings']['roseau_utilities']['site_branding_bg_color'] = [
     '#type' => 'select',
     '#title' => t('Header site branding background color'),
@@ -127,7 +133,7 @@ function roseau_form_system_theme_settings_alter(&$form, &$form_state, $form_id 
  * Validation handler for the Roseau system_theme_settings form.
  */
 function roseau_theme_settings_validate($form, &$form_state) {
-  if (!preg_match('/^#[a-fA-F0-9]{6}$/', $form_state['values']['base_primary_color'])) {
+  if (!empty($form_state['values']['base_primary_color']) && !preg_match('/^#[a-fA-F0-9]{6}$/', $form_state['values']['base_primary_color'])) {
     form_set_error('base_primary_color', t('Colors must be 7-character string specifying a color hexadecimal format.'));
   }
 }

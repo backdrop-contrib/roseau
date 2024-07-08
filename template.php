@@ -623,6 +623,7 @@ function roseau_preprocess_links(&$variables) {
 function roseau_preprocess_header(&$variables) {
   $primary_menu = menu_navigation_links('main-menu');
   $variables['primary_menu'] = theme('links__header_menu__primary', array('links' => $primary_menu));
+  $variables['primary_nav_in_header'] = theme_get_setting('primary_nav_in_header');
 }
 
 /**
