@@ -93,3 +93,5 @@ stylesheets[all][] = css/layout/region.css
 stylesheets[all][] = css/layout/social-bar.css
 ;stylesheets[all][] = css/layout/views.css
 stylesheets[all][] = css/theme/filter.theme.css
+
+settings[color] = false

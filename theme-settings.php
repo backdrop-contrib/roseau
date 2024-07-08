@@ -127,7 +127,7 @@ function roseau_form_system_theme_settings_alter(&$form, &$form_state, $form_id 
  * Validation handler for the Roseau system_theme_settings form.
  */
 function roseau_theme_settings_validate($form, &$form_state) {
-  if (!preg_match('/^#[a-fA-F0-9]{6}$/', &$form_state->getValue('base_primary_color'))) {
-    &$form_state->setErrorByName('base_primary_color', t('Colors must be 7-character string specifying a color hexadecimal format.'));
+  if (!preg_match('/^#[a-fA-F0-9]{6}$/', $form_state['values']['base_primary_color'])) {
+    form_set_error('base_primary_color', t('Colors must be 7-character string specifying a color hexadecimal format.'));
   }
 }
