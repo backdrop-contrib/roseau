@@ -65,13 +65,13 @@ function roseau_form_system_theme_settings_alter(&$form, &$form_state, $form_id 
   $form['roseau_settings']['roseau_utilities']['mobile_menu_all_widths'] = [
     '#type' => 'checkbox',
     '#title' => t('Enable mobile menu at all widths'),
-    '#default_value' => theme_get_setting('mobile_menu_all_widths'),
+    '#default_value' => theme_get_setting('mobile_menu_all_widths', 'roseau'),
     '#description' => t('Enables the mobile menu toggle at all widths.'),
   ];
   $form['roseau_settings']['roseau_utilities']['primary_nav_in_header'] = [
     '#type' => 'checkbox',
     '#title' => t('Show primary navigation menu in header'),
-    '#default_value' => theme_get_setting('primary_nav_in_header'),
+    '#default_value' => theme_get_setting('primary_nav_in_header', 'roseau'),
     '#description' => t('Enable to show primary navigation menu in header if not using the Primary navigation block.'),
   ];
   $form['roseau_settings']['roseau_utilities']['site_branding_bg_color'] = [
@@ -82,7 +82,7 @@ function roseau_form_system_theme_settings_alter(&$form, &$form_state, $form_id 
       'gray' => t('Gray'),
       'white' => t('White'),
     ],
-    '#default_value' => theme_get_setting('site_branding_bg_color'),
+    '#default_value' => theme_get_setting('site_branding_bg_color', 'roseau'),
   ];
   $form['roseau_settings']['roseau_utilities']['roseau_color_scheme'] = [
     '#type' => 'fieldset',
@@ -113,12 +113,12 @@ function roseau_form_system_theme_settings_alter(&$form, &$form_state, $form_id 
 
   foreach ($color_config['colors'] as $key => $title) {
     $form['roseau_settings']['roseau_utilities']['roseau_color_scheme'][$key] = [
-      '#type' => 'textfield',
+      '#type' => 'color',
       '#maxlength' => 7,
       '#size' => 10,
       '#title' => t($title),
       '#description' => t('Enter color in full hexadecimal format (#abc123).') . '<br/>' . t('Derivatives will be formed from this color.'),
-      '#default_value' => theme_get_setting($key),
+      '#default_value' => theme_get_setting($key, 'roseau'),
       '#attributes' => [
         'pattern' => '^#[a-fA-F0-9]{6}',
       ],
