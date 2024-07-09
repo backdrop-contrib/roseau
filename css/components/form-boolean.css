@@ -100,7 +100,7 @@ input.error[type="radio"]::-ms-check {
   border: 1px solid var(--color--red);
 }
 
-input[type="checkbox"] + label,
+input[type="checkbox"] + label:not(.menu-toggle-button),
 input[type="radio"] + label {
   display: inline-block;
   padding-inline-start: var(--sp0-5);
