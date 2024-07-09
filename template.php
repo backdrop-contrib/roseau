@@ -11,7 +11,7 @@
  *
  * Adds body classes if certain regions have content.
  */
-function roseau_preprocess_html(&$variables) {
+function roseau_preprocess_page(&$variables) {
   if (theme_get_setting('mobile_menu_all_widths') === 1) {
     $variables['attributes']['class'][] = 'is-always-mobile-nav';
   }
@@ -20,24 +20,24 @@ function roseau_preprocess_html(&$variables) {
   $brand_color_hex = theme_get_setting('base_primary_color') ?? '#1b9ae4';
   [$h, $s, $l] = _roseau_hex_to_hsl($brand_color_hex);
 
-  $variables['html_attributes']->setAttribute('style', "--color--primary-hue:$h;--color--primary-saturation:$s%;--color--primary-lightness:$l");
+  $variables['html_attributes']['style'] = "--color--primary-hue:$h;--color--primary-saturation:$s%;--color--primary-lightness:$l";
 
   // So fonts can be preloaded from base theme in the event Roseau is used as a subtheme.
-  $variables['roseau_path'] = \Drupal::request()->getBasePath() . '/' . \Drupal::service('extension.list.theme')->getPath('roseau');
+  //$variables['roseau_path'] = \Drupal::request()->getBasePath() . '/' . \Drupal::service('extension.list.theme')->getPath('roseau');
 
-  $query_string = \Drupal::state()->get('system.css_js_query_string') ?: '0';
+  //$query_string = \Drupal::state()->get('system.css_js_query_string') ?: '0';
 
   // Create render array with noscript tag to output non-JavaScript
   // stylesheet for primary menu.
-  $variables['noscript_styles'] = [
-    '#type' => 'html_tag',
-    '#noscript' => TRUE,
-    '#tag' => 'link',
-    '#attributes' => [
-      'rel' => 'stylesheet',
-      'href' => $variables['roseau_path'] . '/css/components/navigation/nav-primary-no-js.css?' . $query_string,
-    ],
-  ];
+  // $variables['noscript_styles'] = [
+    // '#type' => 'html_tag',
+    // '#noscript' => TRUE,
+    // '#tag' => 'link',
+    // '#attributes' => [
+      // 'rel' => 'stylesheet',
+      // 'href' => $variables['roseau_path'] . '/css/components/navigation/nav-primary-no-js.css?' . $query_string,
+    // ],
+  // ];
 }
 
 /**
