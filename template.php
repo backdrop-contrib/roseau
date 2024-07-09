@@ -715,6 +715,34 @@ function roseau_links__header_menu($variables) {
 }
 
 /**
+ * Duplicates theme_menu_link, to put classes on main menu <ul> and <li> tags.
+ */
+function roseau_menu_link(array $variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+  if ($element['#theme']=='menu_link__main_menu') {
+    if ($element['#below']) {
+      $sub_menu = backdrop_render($element['#below']);
+    }
+
+    $element['#title']='<span class="primary-nav__menu-link-inner primary-nav__menu-link-inner--level-1">' . $element['#title'] . '</span>';
+    $element['#attributes']['class'][] = 'primary-nav__menu-link primary-nav__menu-link--link primary-nav__menu-link--level-1';
+    $element['#localized_options'] += array(
+      'attributes' => array(), 
+      'html' => TRUE,
+    );
+    $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+    return '<li' . backdrop_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+  }
+
+  if ($element['#below']) {
+    $sub_menu = backdrop_render($element['#below']);
+  }
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  return '<li ' . backdrop_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
+/**
  * Implements hook_preprocess_table().
  */
 function roseau_preprocess_table(&$variables) {
