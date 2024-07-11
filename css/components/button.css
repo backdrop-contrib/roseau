@@ -23,7 +23,7 @@
 
 /* Width of the entire grid maxes out. */
 
-.button {
+.button, .form-submit {
   display: inline-block;
   height: var(--sp3);
   margin-block: var(--sp1);

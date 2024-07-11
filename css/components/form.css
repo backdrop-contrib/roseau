@@ -169,6 +169,7 @@ tr .form-item,
 }
 
 .form-actions .button,
+.form-actions .form-submit,
 .form-actions .action-link {
   margin-block: var(--sp0-5);
 }
