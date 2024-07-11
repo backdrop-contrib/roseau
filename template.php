@@ -732,14 +732,14 @@ function roseau_menu_link(array $variables) {
       'html' => TRUE,
     );
     $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-    return '<li' . backdrop_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+    return '<li' . backdrop_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>";
   }
 
   if ($element['#below']) {
     $sub_menu = backdrop_render($element['#below']);
   }
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-  return '<li ' . backdrop_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+  return '<li ' . backdrop_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>";
 }
 
 /**
@@ -845,6 +845,60 @@ function _roseau_hex_to_hsl(string $hex_string) {
   $l = round($l * 100);
 
   return [$h, $s, $l];
+}
+
+/**
+ * Override theme_status_messages().
+ */
+function roseau_status_messages($variables) {
+  if (config_get('system.core', 'messages_dismissible')) {
+    backdrop_add_js(backdrop_get_path('theme', 'roseau') . '/js/.messages.js');
+  }
+
+  $display = $variables['display'];
+  $message_types = (empty($variables['messages'])) ? backdrop_get_messages($display) : $variables['messages'];
+  $output = '';
+
+  $status_heading = array(
+    'status' => t('Status message'),
+    'error' => t('Error message'),
+    'warning' => t('Warning message'),
+    'info' => t('Info message'),
+  );
+  $output .= '<div data-backdrop-messages class="messages-list">';
+    $output .= '<div class="messages__wrapper layout-container">';
+
+    foreach ($message_types as $type => $messages) {
+      $output .= "<div data-backdrop-selector=\"messages\" class=\"messages-list__item messages messages--$type $type\">";
+      $output .= '<div class="messages__container" data-backdrop-selector="messages-container">';
+      if (!empty($status_heading[$type])) {
+        $output .= '<div class="messages__header">';
+        $output .= '  <h2 class="element-invisible">' . $status_heading[$type] . "</h2>";
+        $output .= '<div class="messages__icon">';
+           $svg = file_get_contents(backdrop_get_path('theme', 'roseau') . "/images/$type.svg");
+           $output .= $svg;
+        $output .= "</div>";
+        $output .= "</div>";
+      }
+      $output .= '<div class="messages__content">';
+      if (count($messages) > 1) {
+        $output .= '  <ul class="messages__list">';
+        foreach ($messages as $message) {
+          $output .= '    <li class="messages__item">' . $message . "</li>";
+        }
+        $output .= "  </ul>";
+      }
+      else {
+        $output .= reset($messages) . "";
+      }
+      $output .= "</div>";
+      $output .= "</div>";
+      $output .= "</div>";
+    }
+    $output .= "</div>";
+  $output .= "</div>";
+
+  return $output;
 }
 
 /**

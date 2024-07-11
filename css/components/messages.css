@@ -175,3 +175,47 @@
   margin-block-end: var(--sp1);
   border-inline-start: solid 0.375rem var(--color--red);
 }
+
+.messages:before {
+  content: none;
+}
+.messages.error,
+.messages.warning,
+.messages.status,
+.messages.info {
+  background-color: var(--color--gray-5);
+  color: var(--color--white);
+}
+
+/* Dismiss buttons */
+.messages-list .dismiss {
+  display: block;
+  height: 15px;
+  position: absolute;
+  right: 15px; /* LTR */
+  top: 45px;
+  width: 15px;
+}
+.messages-list .dismiss:before,
+.messages-list .dismiss:after {
+  background: #999;
+  content: '';
+  display: block;
+  height: 2px;
+  margin-top: 6px;
+  width: 15px;
+}
+.messages-list .dismiss:before {
+  transform: rotate(-45deg);
+}
+.messages-list .dismiss:after {
+  margin-top: -2px;
+  transform: rotate(45deg);
+}
+[dir="rtl"] .messages-list .dismiss {
+  left: 5px;
+  right: auto;
+}
+.messages.hidden {
+  display: none;
+}

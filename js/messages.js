@@ -3,7 +3,7 @@
  * Customization of messages.
  */
 
-((Drupal, once) => {
+((Backdrop) => {
   /**
    * Adds a close button to the message.
    *
@@ -12,7 +12,7 @@
    */
   const closeMessage = (message) => {
     const messageContainer = message.querySelector(
-      '[data-drupal-selector="messages-container"]',
+      '[data-backdrop-selector="messages-container"]',
     );
 
     const closeBtnWrapper = document.createElement('div');
@@ -23,8 +23,8 @@
     closeBtn.setAttribute('class', 'messages__close');
 
     const closeBtnText = document.createElement('span');
-    closeBtnText.setAttribute('class', 'visually-hidden');
-    closeBtnText.innerText = Drupal.t('Close message');
+    closeBtnText.setAttribute('class', 'element-invisible');
+    closeBtnText.innerText = Backdrop.t('Close message');
 
     messageContainer.appendChild(closeBtnWrapper);
     closeBtnWrapper.appendChild(closeBtn);
@@ -32,24 +32,31 @@
 
     closeBtn.addEventListener('click', () => {
       message.classList.add('hidden');
+      // If all messages are hidden, hide the whole message div.
+      const allMessages = document.querySelectorAll( ' [data-backdrop-selector="messages"]');
+      const hiddenMessages = document.querySelectorAll( ' [data-backdrop-selector="messages"][class~="hidden"]');
+      if (hiddenMessages.length == allMessages.length) {
+        document.querySelector('.l-messages').setAttribute('class', 'element-invisible');
+      }
     });
   };
 
   /**
    * Get messages from context.
    *
-   * @type {Drupal~behavior}
+   * @type {Backdrop~behavior}
    *
-   * @prop {Drupal~behaviorAttach} attach
+   * @prop {Backdrop~behaviorAttach} attach
    *   Attaches the close button behavior for messages.
    */
-  Drupal.behaviors.messages = {
+  Backdrop.behaviors.messages = {
     attach(context) {
-      once('messages', '[data-drupal-selector="messages"]', context).forEach(
+      const allMessages = document.querySelectorAll( ' [data-backdrop-selector="messages"]');
+
+      allMessages.forEach(
         closeMessage,
       );
     },
   };
 
-  Drupal.roseau.closeMessage = closeMessage;
-})(Drupal, once);
+})(Backdrop);
