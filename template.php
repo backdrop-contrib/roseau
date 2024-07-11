@@ -852,7 +852,7 @@ function _roseau_hex_to_hsl(string $hex_string) {
  */
 function roseau_status_messages($variables) {
   if (config_get('system.core', 'messages_dismissible')) {
-    backdrop_add_js(backdrop_get_path('theme', 'roseau') . '/js/.messages.js');
+    backdrop_add_js(backdrop_get_path('theme', 'roseau') . '/js/messages.js');
   }
 
   $display = $variables['display'];
