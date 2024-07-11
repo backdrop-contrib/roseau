@@ -37,6 +37,7 @@ table,
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: var(--sp1-5);
+  width: 100%;
 }
 
 :is(.forum table,table,.text-content table,.views-table,.draggable-table) caption {
@@ -84,6 +85,10 @@ table,
   text-align: center;
 }
 
+.system-modules table td {
+  border-block-end: none;
+}
+
 .draggable-table {
   width: 100%;
 }
@@ -106,4 +111,15 @@ table,
 
 .views-field-node-bulk-form .form-item {
   margin: 0;
+}
+
+tr.even, tr.odd {
+  background-color: var(--color--white);
+  border-bottom: none;
+}
+
+@media screen and (min-width: 721px) {
+  .tableresponsive-toggle-columns {
+    display: none;
+  }
 }

@@ -307,3 +307,7 @@ fieldset {
   border: 0.125em solid #000000;
   min-width: 0;
 }
+
+.system-modules fieldset {
+  padding: 0 !important;
+}
