@@ -36,7 +36,7 @@
 }
 
 .filter-wrapper {
-  margin-block: var(--sp1) var(--sp0-5);
+  margin: 0;
 }
 
 .filter-wrapper .form-item {

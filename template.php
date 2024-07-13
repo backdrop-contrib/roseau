@@ -924,3 +924,30 @@ function roseau_library_info() {
 
   return $libraries;
 }
+
+/**
+ * Override theme_fieldset().
+ */
+function roseau_fieldset($variables) {
+  $element = $variables['element'];
+  element_set_attributes($element, array('id'));
+  _form_set_class($element, array('form-wrapper'));
+  $element['#attributes']['class'][] = 'fieldset';
+
+  $output = '<fieldset' . backdrop_attributes($element['#attributes']) . '>';
+  if (!empty($element['#title'])) {
+    // Always wrap fieldset legends in a SPAN for CSS positioning.
+    $output .= '<legend class="fieldset__legend"><span class="fieldset-legend fieldset__label">' . $element['#title'] . '</span></legend>';
+  }
+  $output .= '<div class="fieldset-wrapper fieldset__wrapper">';
+  if (!empty($element['#description'])) {
+    $output .= '<div class="fieldset-description">' . $element['#description'] . '</div>';
+  }
+  $output .= $element['#children'];
+  if (isset($element['#value'])) {
+    $output .= $element['#value'];
+  }
+  $output .= '</div>';
+  $output .= "</fieldset>\n";
+  return $output;
+}
