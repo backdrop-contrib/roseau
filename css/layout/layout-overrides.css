@@ -1,0 +1,54 @@
+/**
+ * Layout admin css overrides.
+ */
+
+/* Layout listing form. */
+.layout-list .layout-group td {
+  background: var(--color--gray-95);
+  padding-inline-start: var(--sp0-75);
+}
+.layout-list .layout-group td.missing-path,
+ .layout-list .layout-group td.missing-path a {
+   color: var(--color--red);
+ }
+.layout-list tr.disabled td {
+  color: var(--color--gray-90);
+}
+#layout-edit-main {
+  border: solid 2px var(--color--gray-90);
+}
+.layout-editor-region {
+  border: 2px dashed var(--color--gray-90);
+  background: var(--color--white);
+}
+.layout-editor-block-title {
+  background: var(--color--gray-95);
+}
+.layout-editor-placeholder {
+  background-color: var(--color--primary-80);
+}
+.layout-content-form .page-title .layout-editor-block {
+  background-color: var(--color--gray-90);
+}
+.edit-layout-top {
+  background: var(--color--gray-90);
+}
+.layout-editor-block-disabled {
+  color: var(--color--gray-90);
+}
+.layout-editor-block-content {
+  background-color: var(--color--gray-100);
+}
+@media (min-width: 62.5rem) {
+  #layout-edit-main .l-page-title,
+  #layout-edit-main .tabs > *,
+  #layout-edit-main .l-header > *,
+  #layout-edit-main .l-wrapper > *,
+  #layout-edit-main .l-messages > *,
+  #layout-edit-main .l-top > *,
+  #layout-edit-main .l-content > *,
+  #layout-edit-main .l-bottom > *,
+  #layout-edit-main .l-footer > * {
+    margin-block-end: var(--sp1);
+  }
+}
