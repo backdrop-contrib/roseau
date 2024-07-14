@@ -395,8 +395,8 @@ function roseau_preprocess_field(&$variables) {
     $variables['classes'][] = 'text-content';
   }
 
-  if ($variables['element']['#field_type'] == 'image' && $variables['element']['#view_mode'] == 'full' && !$variables["element"]["#is_multiple"] && $variables["element"]['#field_name'] !== 'user_picture') {
-    $variables['classes'][] = 'wide-image';
+  if ($variables['element']['#field_type'] == 'image' && $variables['element']['#view_mode'] == 'full' && !isset($variables["element"]["#items"][1]) && $variables["element"]['#field_name'] !== 'user_picture') {
+    // $variables['classes'][] = 'wide-image';
   }
 }
 
