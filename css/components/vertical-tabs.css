@@ -83,7 +83,6 @@
     position: absolute;
     left: -9999em;
     height: 0;
-    border: 0;
     background: transparent;
   }
 }
@@ -163,7 +162,7 @@ a.vertical-tab-link:active {
   font-size: var(--font-size-s);
   padding-inline-start: var(--sp1);
   padding-inline-end: var(--sp1);
-  color: var(--color--white);
+  color: var(--color-text-neutral-medium);
   line-height: var(--line-height-s);
 }
 .vertical-tabs-pane .fieldset-wrapper {

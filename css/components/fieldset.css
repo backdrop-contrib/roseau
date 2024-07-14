@@ -19,9 +19,10 @@
   padding-inline-start: 0;
   padding-inline-end: 0;
   color: inherit;
-  border: solid 2px var(--color--gray-45);
+  border: var(--details-border-width) solid var(--color--gray-95);
   border-radius: var(--border-radius);
   background-color: var(--color--white);
+  box-shadow: 0 1px 4px var(--color--gray-90);
 }
 
 .fieldset--group {
@@ -39,7 +40,7 @@
   color: inherit;
   border-top-left-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
-  background-color: var(--color--gray-45);
+  background-color: var(--color--gray-100);
   font-size: var(--font-size-l);
   font-weight: 700;
   line-height: var(--line-height-base);
@@ -50,7 +51,7 @@
 }
 
 .fieldset__legend a {
-  color: var(--color--white);
+  color: var(--color-text-neutral-medium);
   text-decoration: none;
 }
 
@@ -76,7 +77,7 @@
   padding-block: var(--sp0-5);
   padding-inline-start: var(--sp1);
   padding-inline-end: var(--sp1);
-  color: var(--color--white);
+  color: var(--color-text-neutral-medium);
   line-height: var(--line-height-s);
 }
 
@@ -195,8 +196,7 @@ fieldset.fieldset {
   border-color: var(--color-text-neutral-medium);
 }
 
-fieldset.filter-wrapper,
-fieldset.vertical-tabs-pane {
+fieldset.filter-wrapper {
   display: block;
   margin: 0;
   color: inherit;
