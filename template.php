@@ -16,6 +16,10 @@ function roseau_preprocess_page(&$variables) {
     $variables['attributes']['class'][] = 'is-always-mobile-nav';
   }
 
+  if (path_is_admin(current_path())) {
+    $variables['classes'][] = 'path-is-admin';
+  }
+
   // Convert custom hex to hsl so we can use the hue value
   $brand_color_hex = theme_get_setting('base_primary_color') ?? '#1b9ae4';
   [$h, $s, $l] = _roseau_hex_to_hsl($brand_color_hex);
@@ -949,5 +953,25 @@ function roseau_fieldset($variables) {
   }
   $output .= '</div>';
   $output .= "</fieldset>\n";
+  return $output;
+}
+
+/**
+ * Override theme function for breadcrumb trail
+ */
+function roseau_breadcrumb($variables) {
+  $breadcrumb = $variables['breadcrumb'];
+  $output = '';
+  if (!empty($breadcrumb)) {
+    $output .= '<nav class="breadcrumb" aria-label="' . t('Website Orientation') . '">';
+    $output .= '<div class="breadcrumb__content">';
+    $output .= '<ol class="breadcrumb__list">';
+    foreach ($breadcrumb as $n => $item) {
+      $output .= "<li class=\"breadcrumb__item\">$item</li>";
+    }
+    $output .= '</ol>';
+    $output .= '</div>';
+    $output .= '</nav>';
+  }
   return $output;
 }

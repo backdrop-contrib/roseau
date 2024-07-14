@@ -38,6 +38,11 @@
     /* Necessary to keep the content from jumping up when header transitions to fixed. */
     min-height: var(--l-header-height-wide);
     border-block-end: solid 1px transparent; /* Will show in Windows high contrast mode. */
+    margin: 0 0 20px;
+  }
+    /* There's no header block on admin layout by default, so need padding. */
+  .path-is-admin .l-header {
+    padding: 20px 0 0;
   }
 }
 

@@ -134,12 +134,12 @@
   transform: rotate(-45deg);
 }
 
-.breadcrumb__link {
+.breadcrumb__item a {
   text-decoration: none;
   color: var(--color-text-primary-medium);
 }
 
-.breadcrumb__link:hover,
-.breadcrumb__link:focus {
+.breadcrumb__item a:hover,
+.breadcrumb__item a:focus {
   text-decoration: underline;
 }
