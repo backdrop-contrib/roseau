@@ -195,6 +195,11 @@ fieldset.fieldset {
   border-color: var(--color-text-neutral-medium);
 }
 
-fieldset.filter-wrapper {
-  border: none;
+fieldset.filter-wrapper,
+fieldset.vertical-tabs-pane {
+  display: block;
+  margin: 0;
+  color: inherit;
+  border: var(--details-border-width) solid var(--color--gray-95);
+  border-radius: 0;
 }

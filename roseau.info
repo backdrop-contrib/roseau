@@ -73,6 +73,7 @@ stylesheets[all][] = css/components/tabs.css
 stylesheets[all][] = css/components/tags.css
 stylesheets[all][] = css/components/text-content.css
 stylesheets[all][] = css/components/ui-dialog.css
+stylesheets[all][] = css/components/vertical-tabs.css
 stylesheets[all][] = css/components/wide-image.css
 stylesheets[all][] = css/layout/grid.css
 stylesheets[all][] = css/layout/layout-builder-fourcol-section.css
