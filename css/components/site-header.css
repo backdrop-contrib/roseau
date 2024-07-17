@@ -92,6 +92,7 @@
 
   html.js body:not(.is-always-mobile-nav) .l-header__inner {
     transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: -36px 1px 36px rgba(0, 0, 0, 0.08);
   }
 }
 
