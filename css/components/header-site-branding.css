@@ -65,6 +65,8 @@
     min-height: var(--l-header-height-wide);
     margin-inline-start: calc(-1 * var(--container-padding));
     padding-block: 0;
+    border-left: 100rem solid var(--color--primary-50);
+    margin-left: calc(-100rem - var(--sp2));
   }
 }
 
